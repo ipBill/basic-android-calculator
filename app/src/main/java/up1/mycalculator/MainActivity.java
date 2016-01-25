@@ -24,6 +24,17 @@ public class MainActivity extends AppCompatActivity {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(firstNumber.getText() == null || firstNumber.getText().toString().isEmpty()) {
+                    firstNumber.setError("Please input data");
+                    return;
+                }
+
+                if(secondNumber.getText() == null || secondNumber.getText().toString().isEmpty()) {
+                    secondNumber.setError("Please input data");
+                    return;
+                }
+
                 int first = Integer.parseInt(firstNumber.getText().toString());
                 int second = Integer.parseInt(secondNumber.getText().toString());
                 int result = 0;
