@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText firstNumber = (EditText) findViewById(R.id.firstNumber);
         final EditText secondNumber = (EditText) findViewById(R.id.secondNumber);
-        final TextView resultTextView = (TextView)findViewById(R.id.result);
+        final TextView resultTextView = (TextView) findViewById(R.id.result);
+        final RadioGroup operatorType = (RadioGroup) findViewById(R.id.operatorType);
 
         Button calculateButton = (Button) findViewById(R.id.calculateButton);
         calculateButton.setOnClickListener(new View.OnClickListener() {
@@ -24,7 +26,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int first = Integer.parseInt(firstNumber.getText().toString());
                 int second = Integer.parseInt(secondNumber.getText().toString());
-                int result = first + second;
+                int result = 0;
+                switch (operatorType.getCheckedRadioButtonId()) {
+                    case R.id.plus :
+                        result = first + second;
+                        break;
+                    case R.id.minus :
+                        result = first - second;
+                        break;
+                    case R.id.multiply :
+                        result = first * second;
+                    case R.id.divide :
+                        result = first / second;
+                        break;
+                }
                 resultTextView.setText(String.valueOf(result));
             }
         });
