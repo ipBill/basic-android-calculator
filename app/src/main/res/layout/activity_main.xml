@@ -16,6 +16,7 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:imeOptions="actionNext"
             android:id="@+id/firstNumber"
             android:inputType="number"
             android:hint="0"
